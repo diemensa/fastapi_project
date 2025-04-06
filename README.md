@@ -4,6 +4,7 @@
 
 - Добавление и удаление задач
 - JWT-аутентификация
+- Миграции PostgreSQL
 
 ---
 
@@ -15,6 +16,7 @@
 - SQLAlchemy
 - Docker
 - Docker Compose
+- Alembic
 
 ---
 
@@ -29,7 +31,15 @@
 2. Собрать и запустить БД при помощи docker-compose:
    ```bash
    docker-compose up --build
-3. Запустить программу через main.py
+3. Применить миграции
+   ```bash
+   alembic revision --autogenerate -m 'Initial commit'
+   ```
+   
+   ```bash
+   alembic upgrade head
+   ```
+4. Запустить программу через main.py
 
 ### Документация API
 После запуска сервиса можно открыть документацию:

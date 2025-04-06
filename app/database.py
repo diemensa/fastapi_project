@@ -1,5 +1,5 @@
 from app.config import get_db_url
-from sqlalchemy import create_engine, MetaData
+from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker, Session
 from fastapi import Depends
 from typing import Annotated
