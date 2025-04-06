@@ -5,8 +5,8 @@ from fastapi import Depends
 from starlette import status
 
 from app.auth import get_cur_user
-from app.core.database import db_dependency
-from app.core.models import Task
+from app.database import db_dependency
+from app.models.task import Task
 from app.schemes import TaskBase
 
 from sqlalchemy import and_
@@ -20,6 +20,7 @@ router = APIRouter(prefix="/task", tags=["task"])
 async def create_task(new_task: TaskBase,
                       db: db_dependency,
                       user: user_dependency):
+
     if user is None:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Couldn't validate user")
@@ -28,6 +29,7 @@ async def create_task(new_task: TaskBase,
                    state=new_task.state,
                    deadline=new_task.deadline,
                    owner_id=user['id'])
+
     db.add(db_task)
     db.commit()
 
@@ -38,6 +40,7 @@ async def create_task(new_task: TaskBase,
 async def delete_task(del_task: str,
                       user: user_dependency,
                       db: db_dependency):
+
     res = db.query(Task).filter(and_(Task.task == del_task,
                                      Task.owner_id == user['id']))
 
