@@ -10,6 +10,7 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_HOST=postgres
       - DB_NAME=${DB_NAME}
+      - PYTHONPATH=/app
     depends_on:
       postgres:
         condition: service_healthy

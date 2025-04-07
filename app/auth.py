@@ -7,7 +7,7 @@ from jose import jwt, JWTError
 from passlib.context import CryptContext
 from starlette import status
 
-from models.user import User
+from app.models.user import User
 
 SECRET_KEY = "NIEMANDHIERWIRDKENNENOBICHWEISSMONSTERNURIMKUEHLSCHRANKHABE1337"
 ALGORITHM = "HS256"
