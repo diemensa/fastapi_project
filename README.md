@@ -4,7 +4,7 @@
 
 - Добавление и удаление задач
 - JWT-аутентификация
-- Миграции PostgreSQL
+- Миграции БД при помощи Alembic
 
 ---
 
@@ -17,7 +17,6 @@
 - Docker
 - Docker Compose
 - Alembic
-
 ---
 
 ## Запуск
@@ -28,20 +27,11 @@
    ```bash
    git clone https://github.com/diemensa/fastapi_project
    cd fastapi_project
-2. Собрать и запустить БД при помощи docker-compose:
+2. Собрать и запустить проект через docker-compose:
    ```bash
    docker-compose up --build
-3. Применить миграции
-   ```bash
-   alembic revision --autogenerate -m 'Initial commit'
-   ```
-   
-   ```bash
-   alembic upgrade head
-   ```
-4. Запустить программу через main.py
 
 ### Документация API
-После запуска сервиса можно открыть документацию:
+После запуска можно открыть документацию:
 - SwaggerUI: http://localhost:8080/docs
 - ReDoc: http://localhost:8080/redoc

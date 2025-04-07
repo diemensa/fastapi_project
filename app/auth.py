@@ -15,8 +15,6 @@ ALGORITHM = "HS256"
 bcrypt_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
 oauth2_bearer = OAuth2PasswordBearer(tokenUrl='auth/token')
 
-router = APIRouter(prefix="/auth", tags=["auth"])
-
 
 def authenticate_user(username: str, password: str, db):
     user = db.query(User).filter(User.username == username).first()
@@ -52,4 +50,3 @@ async def get_cur_user(token: Annotated[str, Depends(oauth2_bearer)]):
     except JWTError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Couldn't validate the user")
-
